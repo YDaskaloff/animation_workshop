@@ -1,13 +1,16 @@
 import React from 'react';
 import {SafeAreaView, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import Animated from 'react-native-reanimated';
+import {usePositionAnimation} from './app/hooks/usePositionAnimation';
 
 function App(): JSX.Element {
+  const {animatedStyle, trigger, isMoving} = usePositionAnimation();
+
   return (
     <SafeAreaView style={styles.screen}>
-      <Animated.View style={styles.square} />
-      <TouchableOpacity onPress={() => undefined} style={styles.trigger}>
-        <Text style={styles.triggerText}>TRIGGER</Text>
+      <Animated.View style={[styles.square, animatedStyle]} />
+      <TouchableOpacity onPress={trigger} style={styles.trigger}>
+        <Text style={styles.triggerText}>{isMoving ? 'STOP' : 'TRIGGER'}</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
@@ -17,13 +20,13 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
   },
   square: {
     backgroundColor: 'blue',
     height: 120,
     width: 120,
     borderRadius: 20,
+    marginTop: 40,
   },
   trigger: {
     position: 'absolute',
