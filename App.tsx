@@ -1,14 +1,16 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {SafeAreaView, StyleSheet, View} from 'react-native';
 import Animated from 'react-native-reanimated';
+
+import {Button} from './app/components/Button/Button';
 
 function App(): JSX.Element {
   return (
     <SafeAreaView style={styles.screen}>
       <Animated.View style={styles.square} />
-      <TouchableOpacity onPress={() => undefined} style={styles.trigger}>
-        <Text style={styles.triggerText}>TRIGGER</Text>
-      </TouchableOpacity>
+      <View style={styles.buttonsContainer}>
+        <Button onPress={() => undefined} title="TRIGGER" />
+      </View>
     </SafeAreaView>
   );
 }
@@ -25,19 +27,11 @@ const styles = StyleSheet.create({
     width: 120,
     borderRadius: 20,
   },
-  trigger: {
+  buttonsContainer: {
     position: 'absolute',
     bottom: 50,
-    height: 40,
-    width: 150,
-    borderRadius: 10,
-    backgroundColor: 'green',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  triggerText: {
-    color: '#fff',
-    fontWeight: '700',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });
 
