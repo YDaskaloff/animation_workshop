@@ -9,7 +9,9 @@ import {
   withTiming,
 } from 'react-native-reanimated';
 
-export const usePositionAnimation = () => {
+import {AnimationHookType} from '../types/animationHookTypes';
+
+export const usePositionAnimation: AnimationHookType = () => {
   const [isMoving, setIsMoving] = useState(false);
   const position = useSharedValue(0);
   const animatedStyle = useAnimatedStyle(() => ({
