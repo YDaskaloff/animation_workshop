@@ -8,6 +8,7 @@ export default StyleSheet.create({
     backgroundColor: 'green',
     alignItems: 'center',
     justifyContent: 'center',
+    rotate: '0deg',
   },
   triggerText: {
     color: '#fff',
